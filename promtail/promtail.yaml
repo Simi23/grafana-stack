@@ -29,6 +29,6 @@ scrape_configs:
       listen_address: 0.0.0.0:4445
       use_incoming_timestamp: true
       labels:
-        - xhostname: __syslog_connection_hostname
-        - xseverity: __syslog_message_severity
-        - xscrapedhostname: __syslog_message_hostname
+        xhostname: __syslog_connection_hostname
+        xseverity: __syslog_message_severity
+        xscrapedhostname: __syslog_message_hostname
