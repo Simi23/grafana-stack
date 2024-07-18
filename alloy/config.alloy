@@ -50,8 +50,17 @@ prometheus.scrape "docker" {
         {"__address__" = "cadvisor:8080", group = "infrastructure", service = "docker"},
     ]
     scrape_interval = "15s"
-    forward_to = [prometheus.remote_write.mimir.receiver]
+    forward_to = [prometheus.relabel.docker.receiver]
     job_name = "docker"
+}
+
+prometheus.relabel "docker" {
+    forward_to = [prometheus.remote_write.mimir.receiver]
+    rule {
+        action = "replace"
+        source_labels = ["name"]
+        target_label = "container"
+    }
 }
 
 // Scrape the local Alloy itself.
