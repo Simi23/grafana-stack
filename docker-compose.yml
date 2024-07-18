@@ -121,8 +121,9 @@ services:
       - mimir_data:/mimir
 
   cadvisor:
-    image: google/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:latest
     restart: unless-stopped
+    privileged: true
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
