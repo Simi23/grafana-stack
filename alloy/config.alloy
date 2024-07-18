@@ -45,6 +45,15 @@ prometheus.scrape "infra" {
 //     job_name = "mythical"
 // }
 
+prometheus.scrape "docker" {
+    targets = [
+        {"__address__" = "cadvisor:8080", group = "infrastructure", service = "docker"},
+    ]
+    scrape_interval = "15s"
+    forward_to = [prometheus.remote_write.mimir.receiver]
+    job_name = "docker"
+}
+
 // Scrape the local Alloy itself.
 prometheus.scrape "agent" {
     // Only one target, the Alloy, it's part of the 'infrastructure' group.

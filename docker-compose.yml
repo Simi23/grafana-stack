@@ -120,6 +120,15 @@ services:
       - "./mimir/mimir.yaml:/etc/mimir.yaml"
       - mimir_data:/mimir
 
+  cadvisor:
+    image: google/cadvisor:latest
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:var/lib/docker:ro
+
 volumes:
   grafana_config:
   grafana_data:
