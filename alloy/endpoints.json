@@ -12,20 +12,5 @@
             "username": "",
             "password": ""
         }
-    },
-    "traces": {
-        "url": "http://tempo:4317",
-        "basicAuthToken": "",
-        "tls": {
-            "insecure": true,
-            "insecureSkipVerify": true
-        }
-    },
-    "profiles": {
-        "url": "http://pyroscope:4040",
-        "basicAuth": {
-            "username": "",
-            "password": ""
-        }
     }
 }
